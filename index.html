@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>50 Aniversario - Mami y Papi</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -45,7 +49,7 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
-        /* Masonry layout para columnas */
+        /* Masonry layout */
         .masonry-grid {
             column-count: 1;
             column-gap: 1rem;
@@ -58,9 +62,8 @@
         
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        /* Estilos para las cajas de IA */
+        
+        /* Estilos IA */
         .ai-box {
             background: rgba(255, 255, 255, 0.9);
             border: 1px solid #E6C985;
@@ -84,7 +87,7 @@
 </head>
 <body class="bg-slate-50 text-gray-800 font-sans selection:bg-gold-200 selection:text-gold-800">
 
-    <!-- Navbar sutil -->
+    <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gold-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -123,7 +126,7 @@
         </div>
     </div>
 
-    <!-- Sección de Mensaje (La Carta) -->
+    <!-- Carta / Mensaje -->
     <section id="mensaje" class="py-16 bg-white relative">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -163,16 +166,15 @@
         </div>
     </section>
 
-    <!-- Sección de Video -->
+    <!-- Video -->
     <section id="video" class="py-16 bg-gray-900 text-white relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-serif text-gold-300 mb-8">Nuestra Historia en Video</h2>
             
             <div class="relative w-full pb-[56.25%] rounded-xl overflow-hidden shadow-2xl border border-gold-600/30 bg-black">
-                <!-- Video de Alejandro -->
                 <iframe 
                     class="absolute top-0 left-0 w-full h-full"
-                    src="https://youtu.be/CVsQbXPY8JA?si=zHlE1y7qj8qXQAUx" 
+                    src="https://www.youtube.com/embed/dWKH6d1d-c8?rel=0" 
                     title="Video 50 Aniversario" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -183,9 +185,8 @@
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN CON GEMINI API -->
+    <!-- Rincón Mágico IA -->
     <section id="ia-magic" class="py-16 bg-gradient-to-br from-gold-100/50 to-white relative overflow-hidden">
-        <!-- Decoración de fondo -->
         <i class="fas fa-sparkles absolute top-10 left-10 text-4xl text-gold-300 opacity-50 animate-pulse"></i>
         <i class="fas fa-star absolute bottom-10 right-10 text-3xl text-gold-300 opacity-50 animate-pulse" style="animation-delay: 1s;"></i>
 
@@ -198,7 +199,7 @@
 
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <!-- FEATURE 1: Generador de Dedicatorias -->
+                <!-- Ayudante de Dedicatorias -->
                 <div class="bg-white p-8 rounded-xl shadow-xl border border-gold-200">
                     <div class="flex items-center mb-6">
                         <div class="bg-gold-100 p-3 rounded-full mr-4">
@@ -206,7 +207,7 @@
                         </div>
                         <h3 class="text-2xl font-serif text-gray-800">Ayudante de Dedicatorias</h3>
                     </div>
-                    <p class="text-gray-600 mb-4 text-sm">¿No sabes qué escribir en el libro de visitas? Cuéntame quién eres y un recuerdo breve, y crearé un mensaje hermoso para ti.</p>
+                    <p class="text-gray-600 mb-4 text-sm">¿No sabes qué escribir? Cuéntame quién eres y un recuerdo breve, y crearé un mensaje hermoso.</p>
                     
                     <div class="space-y-4">
                         <div>
@@ -215,14 +216,13 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Un recuerdo o sentimiento</label>
-                            <textarea id="dedicationMemory" rows="3" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: Siempre recuerdo las navidades en su casa y lo rico que cocinaba Amanda..."></textarea>
+                            <textarea id="dedicationMemory" rows="3" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: Las navidades en casa de Amanda..."></textarea>
                         </div>
                         <button onclick="generateDedication()" class="w-full bg-gold-500 hover:bg-gold-600 text-white font-serif py-3 rounded-md transition duration-300 flex justify-center items-center gap-2">
                             <span>✨ Escribir Mensaje Bonito</span>
                         </button>
                     </div>
 
-                    <!-- Resultado -->
                     <div id="dedicationResult" class="mt-6 hidden">
                         <div class="bg-gold-50 p-4 rounded-lg border border-gold-200 relative">
                             <i class="fas fa-quote-left text-gold-300 text-2xl absolute top-2 left-2 opacity-50"></i>
@@ -234,7 +234,7 @@
                     </div>
                 </div>
 
-                <!-- FEATURE 2: Consejo de Sabiduría -->
+                <!-- Consejo de Oro -->
                 <div class="bg-white p-8 rounded-xl shadow-xl border border-gold-200">
                     <div class="flex items-center mb-6">
                         <div class="bg-gold-100 p-3 rounded-full mr-4">
@@ -242,19 +242,18 @@
                         </div>
                         <h3 class="text-2xl font-serif text-gray-800">Consejo de Oro</h3>
                     </div>
-                    <p class="text-gray-600 mb-4 text-sm">Pide un consejo. La IA responderá simulando la sabiduría y los valores de Oswaldo (positivo, trabajador) y Amanda (luchadora, astuta).</p>
+                    <p class="text-gray-600 mb-4 text-sm">Pide un consejo. La IA responderá simulando la sabiduría y los valores de Oswaldo y Amanda.</p>
                     
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">¿Qué consejo necesitas hoy?</label>
-                            <textarea id="adviceQuestion" rows="4" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: ¿Cuál es el secreto para durar 50 años juntos? o ¿Cómo mantener la fe en tiempos difíciles?"></textarea>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">¿Qué consejo necesitas?</label>
+                            <textarea id="adviceQuestion" rows="4" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: ¿Cuál es el secreto para durar 50 años juntos?"></textarea>
                         </div>
                         <button onclick="generateAdvice()" class="w-full bg-gray-800 hover:bg-gray-900 text-white font-serif py-3 rounded-md transition duration-300 flex justify-center items-center gap-2">
-                            <span>✨ Pedir Consejo a los Abuelos</span>
+                            <span>✨ Pedir Consejo</span>
                         </button>
                     </div>
 
-                    <!-- Resultado -->
                     <div id="adviceResult" class="mt-6 hidden">
                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                             <div class="flex items-start gap-3">
@@ -272,21 +271,18 @@
         </div>
     </section>
 
-    <!-- Galería de Fotos (Masonry) -->
+    <!-- Galería -->
     <section id="galeria" class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="text-gold-600 font-script text-2xl">Momentos Inolvidables</span>
                 <h2 class="text-4xl font-serif text-gray-800 mt-2">Álbum de Recuerdos</h2>
             </div>
-
-            <div class="masonry-grid" id="photo-grid">
-                <!-- Las imágenes se inyectan aquí vía JS para manejo limpio -->
-            </div>
+            <div class="masonry-grid" id="photo-grid"></div>
         </div>
     </section>
 
-    <!-- Dedicatoria Final -->
+    <!-- Footer -->
     <section class="py-20 bg-white border-t border-gold-100 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-gold-300 to-transparent"></div>
         <div class="max-w-2xl mx-auto px-4">
@@ -301,28 +297,22 @@
         </div>
     </section>
 
-    <!-- Lightbox Modal -->
+    <!-- Lightbox -->
     <div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gold-400 text-4xl focus:outline-none">&times;</button>
         <img id="lightbox-img" src="" alt="Full size" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl border border-gray-800">
     </div>
 
-    <!-- Scripts de Funcionalidad -->
+    <!-- Scripts -->
     <script>
-        // --- GEMINI API LOGIC ---
-        const apiKey = ""; // API Key handled by system
+        // CONFIGURACIÓN API (ALEX: TU KEY ESTÁ AQUÍ)
+        const apiKey = "AIzaSyBFU2rFSH1MQKaaZ7xQboAaehbgOfZMH7g"; 
 
         async function callGemini(prompt) {
-            if (!apiKey) {
-                console.error("API Key not found");
-                return "Error: No se pudo conectar con el servicio de IA.";
-            }
+            if (!apiKey) return "Error: API Key no configurada.";
 
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }]
-            };
+            const payload = { contents: [{ parts: [{ text: prompt }] }] };
 
             try {
                 const response = await fetch(url, {
@@ -330,14 +320,12 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-
                 if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-                
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "Lo siento, no pude generar una respuesta en este momento.";
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "No se pudo generar respuesta.";
             } catch (error) {
-                console.error("Gemini API Error:", error);
-                return "Hubo un pequeño error técnico. Por favor intenta de nuevo.";
+                console.error("Gemini Error:", error);
+                return "Hubo un error de conexión con la IA.";
             }
         }
 
@@ -348,28 +336,18 @@
             const textP = document.getElementById('dedicationText');
             const btn = document.querySelector("button[onclick='generateDedication()']");
 
-            if (!name || !memory) {
-                alert("Por favor escribe tu nombre y un recuerdo para generar el mensaje.");
-                return;
-            }
+            if (!name || !memory) { alert("Llena los campos por favor."); return; }
 
-            // UI Loading state
             btn.disabled = true;
-            const originalBtnText = btn.innerHTML;
+            const originalText = btn.innerHTML;
             btn.innerHTML = `<span class="loading-dots">Creando magia</span>`;
             
-            const prompt = `Escribe una dedicatoria breve, emotiva y elegante para el 50 aniversario de bodas (Bodas de Oro) de Oswaldo y Amanda. 
-            Quien escribe es: ${name}. 
-            El recuerdo o contexto clave es: "${memory}". 
-            El tono debe ser cariñoso, familiar y respetuoso. Máximo 60 palabras. Idioma: Español.`;
+            const prompt = `Escribe una dedicatoria breve, emotiva y elegante para el 50 aniversario de bodas (Bodas de Oro) de Oswaldo y Amanda. Quien escribe es: ${name}. El recuerdo clave es: "${memory}". Tono cariñoso y familiar. Máximo 60 palabras. Idioma: Español.`;
 
             const response = await callGemini(prompt);
-
             textP.innerText = response;
             resultDiv.classList.remove('hidden');
-            
-            // Restore button
-            btn.innerHTML = originalBtnText;
+            btn.innerHTML = originalText;
             btn.disabled = false;
         }
 
@@ -379,66 +357,35 @@
             const textP = document.getElementById('adviceText');
             const btn = document.querySelector("button[onclick='generateAdvice()']");
 
-            if (!question) {
-                alert("Por favor escribe una pregunta para pedir consejo.");
-                return;
-            }
+            if (!question) { alert("Escribe tu pregunta."); return; }
 
-            // UI Loading state
             btn.disabled = true;
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = `<span class="loading-dots">Consultando a la sabiduría</span>`;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<span class="loading-dots">Consultando</span>`;
 
-            const prompt = `Actúa como la "conciencia colectiva" de Oswaldo y Amanda, una pareja que celebra 50 años de casados.
-            Perfil de Oswaldo: Positivo, trabajador incansable, nunca se queja, siempre tiene buena actitud.
-            Perfil de Amanda: Astuta, luchadora, inteligente, estratega, con aspiraciones de ser mejor.
-            Ambos: Buenos cristianos, valoran la familia y la perseverancia.
-            
-            Responde a esta pregunta de un familiar: "${question}"
-            
-            Da un consejo breve, sabio y cálido que combine la positividad de él y la astucia de ella. Máximo 80 palabras. Idioma: Español.`;
+            const prompt = `Actúa como la conciencia colectiva de Oswaldo (positivo, trabajador, no se queja) y Amanda (astuta, luchadora, estratega) en sus 50 años de casados. Son cristianos y valoran la familia. Responde a: "${question}". Da un consejo breve (max 80 palabras) combinando sus personalidades. Idioma: Español.`;
 
             const response = await callGemini(prompt);
-
             textP.innerText = response;
             resultDiv.classList.remove('hidden');
-
-            // Restore button
-            btn.innerHTML = originalBtnText;
+            btn.innerHTML = originalText;
             btn.disabled = false;
         }
 
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Texto copiado al portapapeles ✨");
-            });
+            navigator.clipboard.writeText(text).then(() => alert("Copiado ✨"));
         }
 
-        // --- EXISTING GALLERY LOGIC ---
-        // Lista de URLs de Imgur proporcionadas (limpia de duplicados obvios y organizada)
+        // FOTOS
         const photos = [
-            "https://i.imgur.com/D589ir7.jpeg",
-            "https://i.imgur.com/SbG0Huc.jpeg",
-            "https://i.imgur.com/23krVt0.jpeg",
-            "https://i.imgur.com/jAOjZOG.jpeg",
-            "https://i.imgur.com/S5AX84X.jpeg",
-            "https://i.imgur.com/VBVsiBN.jpeg",
-            "https://i.imgur.com/6tOc870.jpeg",
-            "https://i.imgur.com/fHu0wSg.jpeg",
-            "https://i.imgur.com/8Pu3xvr.jpeg",
-            "https://i.imgur.com/kS5VlQ7.jpeg",
-            "https://i.imgur.com/iXOjUaj.jpeg",
-            "https://i.imgur.com/dq4GVst.jpeg",
-            "https://i.imgur.com/Ib4LkIP.jpeg",
-            "https://i.imgur.com/F8Tw5cg.jpeg",
-            "https://i.imgur.com/wPn1Mcf.jpeg",
-            "https://i.imgur.com/utDeu8K.jpeg",
-            "https://i.imgur.com/cvciPEy.jpeg",
-            "https://i.imgur.com/KGplE83.jpeg",
-            "https://i.imgur.com/XhGtFRH.jpeg",
-            "https://i.imgur.com/70Zx1rE.jpeg",
-            "https://i.imgur.com/HBSckNF.jpeg",
+            "https://i.imgur.com/D589ir7.jpeg", "https://i.imgur.com/SbG0Huc.jpeg", "https://i.imgur.com/23krVt0.jpeg",
+            "https://i.imgur.com/jAOjZOG.jpeg", "https://i.imgur.com/S5AX84X.jpeg", "https://i.imgur.com/VBVsiBN.jpeg",
+            "https://i.imgur.com/6tOc870.jpeg", "https://i.imgur.com/fHu0wSg.jpeg", "https://i.imgur.com/8Pu3xvr.jpeg",
+            "https://i.imgur.com/kS5VlQ7.jpeg", "https://i.imgur.com/iXOjUaj.jpeg", "https://i.imgur.com/dq4GVst.jpeg",
+            "https://i.imgur.com/Ib4LkIP.jpeg", "https://i.imgur.com/F8Tw5cg.jpeg", "https://i.imgur.com/wPn1Mcf.jpeg",
+            "https://i.imgur.com/utDeu8K.jpeg", "https://i.imgur.com/cvciPEy.jpeg", "https://i.imgur.com/KGplE83.jpeg",
+            "https://i.imgur.com/XhGtFRH.jpeg", "https://i.imgur.com/70Zx1rE.jpeg", "https://i.imgur.com/HBSckNF.jpeg",
             "https://i.imgur.com/STVqeoY.jpeg"
         ];
 
@@ -446,52 +393,33 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
-        // Generar grilla de fotos
         photos.forEach((url, index) => {
             const div = document.createElement('div');
             div.className = 'photo-card break-inside-avoid mb-4';
             div.innerHTML = `
                 <div class="relative group cursor-pointer overflow-hidden rounded-lg shadow-md bg-white p-1 border border-gray-100" onclick="openLightbox('${url}')">
-                    <div class="aspect-w-3 aspect-h-4 md:aspect-none">
-                        <img src="${url}" alt="Recuerdo ${index + 1}" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
-                    </div>
+                    <img src="${url}" alt="Recuerdo ${index + 1}" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                         <i class="fas fa-search-plus text-white text-2xl drop-shadow-lg"></i>
                     </div>
-                </div>
-            `;
+                </div>`;
             grid.appendChild(div);
         });
 
-        // Funciones del Lightbox
         function openLightbox(url) {
             lightboxImg.src = url;
             lightbox.classList.remove('hidden');
-            setTimeout(() => {
-                lightbox.classList.remove('opacity-0');
-            }, 10);
-            document.body.style.overflow = 'hidden'; 
+            setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden';
         }
-
         function closeLightbox() {
             lightbox.classList.add('opacity-0');
-            setTimeout(() => {
-                lightbox.classList.add('hidden');
-                lightboxImg.src = '';
-            }, 300);
+            setTimeout(() => { lightbox.classList.add('hidden'); lightboxImg.src = ''; }, 300);
             document.body.style.overflow = 'auto';
         }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") closeLightbox();
-        });
-
-        lightbox.addEventListener('click', function(event) {
-            if (event.target === lightbox) closeLightbox();
-        });
+        document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLightbox(); });
+        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
     </script>
 </body>
 </html>
-
-
 
