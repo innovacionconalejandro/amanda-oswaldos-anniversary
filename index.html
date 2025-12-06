@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Aniversario - Mami y Papi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#F9F1D8',
+                            300: '#E6C985',
+                            500: '#D4AF37', // Oro clásico
+                            600: '#AA8C2C',
+                            800: '#755C1B',
+                        }
+                    },
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-text-gradient {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .photo-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+        /* Masonry layout para columnas */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        
+        .fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Estilos para las cajas de IA */
+        .ai-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #E6C985;
+            transition: all 0.3s ease;
+        }
+        .ai-box:focus-within {
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+        .loading-dots:after {
+            content: '.';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            80%, 100% { content: ''; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans selection:bg-gold-200 selection:text-gold-800">
+
+    <!-- Navbar sutil -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gold-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fas fa-rings-wedding text-gold-600 text-2xl mr-2"></i>
+                    <span class="font-script text-3xl text-gray-800">Familia Ortega</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#mensaje" class="text-gray-600 hover:text-gold-600 transition font-serif italic">Dedicatoria</a>
+                    <a href="#video" class="text-gray-600 hover:text-gold-600 transition font-serif italic">Video</a>
+                    <a href="#galeria" class="text-gray-600 hover:text-gold-600 transition font-serif italic">Recuerdos</a>
+                    <a href="#ia-magic" class="text-gold-600 hover:text-gold-800 transition font-serif italic font-bold">✨ Magia</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-white overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50"></div>
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-gold-100/50 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-yellow-100/50 blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block p-2 px-4 rounded-full bg-gold-50 border border-gold-200 text-gold-800 text-sm font-semibold tracking-wide uppercase mb-4 fade-in-up">
+                50 Años de Amor
+            </span>
+            <h1 class="text-5xl md:text-7xl font-script text-gray-900 mb-4 gold-text-gradient fade-in-up delay-100 py-2">
+                Bodas de Oro
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 font-serif italic fade-in-up delay-200">
+                Oswaldo & Amanda
+            </p>
+        </div>
+    </div>
+
+    <!-- Sección de Mensaje (La Carta) -->
+    <section id="mensaje" class="py-16 bg-white relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <i class="fas fa-heart text-gold-500 text-3xl mb-4 animate-pulse"></i>
+                <h2 class="text-3xl font-serif text-gray-800">Para Mami y Papi</h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="prose prose-lg prose-gold mx-auto text-gray-600 text-justify leading-relaxed font-light">
+                <p class="mb-6 first-letter:text-5xl first-letter:font-script first-letter:text-gold-600 first-letter:float-left first-letter:mr-3">
+                    Hoy quiero hablarles desde lo más profundo de mi corazón. Tengo recuerdos inborrables de cómo siempre me cuidaron, guiándome en cada paso para hacerme el hombre de bien que soy hoy. No solo lo hicieron conmigo, sino que hoy veo con orgullo inmenso cómo son ese faro de luz para sus nietos: Sofi, Valentina, José Emilio e Ivannita.
+                </p>
+                
+                <p class="mb-6">
+                    Ustedes les dan el ejemplo vivo de lo que significa ser buenas personas, buenos cristianos, seres humanos íntegros y ciudadanos responsables. Ese legado ya vive en ellos.
+                </p>
+
+                <div class="bg-gold-50 border-l-4 border-gold-500 p-6 my-8 rounded-r-lg shadow-sm">
+                    <p class="italic text-gray-800 font-serif text-lg m-0">
+                        "Sé que a veces nos alegamos un poco y somos un poco gritones, <strong class="text-gold-800">porque así somos los Ortega</strong>. Es nuestra esencia, nuestra pasión y nuestra forma de ser. Pero debajo de ese volumen alto, hay un amor inquebrantable que nos une."
+                    </p>
+                </div>
+
+                <p class="mb-6">
+                    Tal vez la vida no se trate de acumular riquezas o esas "bendiciones" materiales que el mundo vende como felicidad. Para mí, la definición de éxito es otra. <strong>Tengo la bendición más grande: que ustedes están.</strong> Que siempre están a mi lado, apoyándome incondicionalmente y dándome consejo. 
+                </p>
+
+                <p class="mb-8">
+                    Mami, tu astucia y tu lucha incansable; Papi, tu actitud positiva ante la vida sin quejarte nunca. Son mi ejemplo de perseverancia y amor. Creo que tenerlos es lo más importante que tengo en la vida.
+                </p>
+
+                <div class="text-center mt-12 pt-8 border-t border-gray-100">
+                    <p class="font-serif italic text-gray-500 mb-2">Con amor eterno y gratitud,</p>
+                    <p class="font-script text-4xl text-gold-600">Su hijo, Alejandro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Video -->
+    <section id="video" class="py-16 bg-gray-900 text-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-serif text-gold-300 mb-8">Nuestra Historia en Video</h2>
+            
+            <div class="relative w-full pb-[56.25%] rounded-xl overflow-hidden shadow-2xl border border-gold-600/30 bg-black">
+                <!-- Video de Alejandro -->
+                <iframe 
+                    class="absolute top-0 left-0 w-full h-full"
+                    src="https://youtu.be/CVsQbXPY8JA?si=zHlE1y7qj8qXQAUx" 
+                    title="Video 50 Aniversario" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="mt-6 text-gray-400 italic">Un recorrido por 50 años de construcción de familia.</p>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN CON GEMINI API -->
+    <section id="ia-magic" class="py-16 bg-gradient-to-br from-gold-100/50 to-white relative overflow-hidden">
+        <!-- Decoración de fondo -->
+        <i class="fas fa-sparkles absolute top-10 left-10 text-4xl text-gold-300 opacity-50 animate-pulse"></i>
+        <i class="fas fa-star absolute bottom-10 right-10 text-3xl text-gold-300 opacity-50 animate-pulse" style="animation-delay: 1s;"></i>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-gold-600 font-script text-2xl">Interactúa con la Historia</span>
+                <h2 class="text-4xl font-serif text-gray-800 mt-2">Rincón Mágico ✨</h2>
+                <p class="text-gray-500 mt-2">Impulsado por Inteligencia Artificial</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- FEATURE 1: Generador de Dedicatorias -->
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-gold-200">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gold-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-pen-fancy text-gold-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif text-gray-800">Ayudante de Dedicatorias</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-sm">¿No sabes qué escribir en el libro de visitas? Cuéntame quién eres y un recuerdo breve, y crearé un mensaje hermoso para ti.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tu Nombre</label>
+                            <input type="text" id="dedicationName" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: Tía Juana">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Un recuerdo o sentimiento</label>
+                            <textarea id="dedicationMemory" rows="3" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: Siempre recuerdo las navidades en su casa y lo rico que cocinaba Amanda..."></textarea>
+                        </div>
+                        <button onclick="generateDedication()" class="w-full bg-gold-500 hover:bg-gold-600 text-white font-serif py-3 rounded-md transition duration-300 flex justify-center items-center gap-2">
+                            <span>✨ Escribir Mensaje Bonito</span>
+                        </button>
+                    </div>
+
+                    <!-- Resultado -->
+                    <div id="dedicationResult" class="mt-6 hidden">
+                        <div class="bg-gold-50 p-4 rounded-lg border border-gold-200 relative">
+                            <i class="fas fa-quote-left text-gold-300 text-2xl absolute top-2 left-2 opacity-50"></i>
+                            <p id="dedicationText" class="text-gray-700 italic font-serif text-center pt-4 pb-2 px-4 leading-relaxed"></p>
+                            <div class="text-center mt-2">
+                                <button onclick="copyToClipboard('dedicationText')" class="text-xs text-gold-600 hover:text-gold-800 underline">Copiar texto</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FEATURE 2: Consejo de Sabiduría -->
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-gold-200">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gold-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-dove text-gold-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif text-gray-800">Consejo de Oro</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-sm">Pide un consejo. La IA responderá simulando la sabiduría y los valores de Oswaldo (positivo, trabajador) y Amanda (luchadora, astuta).</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">¿Qué consejo necesitas hoy?</label>
+                            <textarea id="adviceQuestion" rows="4" class="w-full ai-box rounded-md p-2 focus:outline-none" placeholder="Ej: ¿Cuál es el secreto para durar 50 años juntos? o ¿Cómo mantener la fe en tiempos difíciles?"></textarea>
+                        </div>
+                        <button onclick="generateAdvice()" class="w-full bg-gray-800 hover:bg-gray-900 text-white font-serif py-3 rounded-md transition duration-300 flex justify-center items-center gap-2">
+                            <span>✨ Pedir Consejo a los Abuelos</span>
+                        </button>
+                    </div>
+
+                    <!-- Resultado -->
+                    <div id="adviceResult" class="mt-6 hidden">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-start gap-3">
+                                <div class="bg-gold-500 rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">OA</div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Mami y Papi dicen:</p>
+                                    <p id="adviceText" class="text-gray-800 leading-relaxed"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos (Masonry) -->
+    <section id="galeria" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-gold-600 font-script text-2xl">Momentos Inolvidables</span>
+                <h2 class="text-4xl font-serif text-gray-800 mt-2">Álbum de Recuerdos</h2>
+            </div>
+
+            <div class="masonry-grid" id="photo-grid">
+                <!-- Las imágenes se inyectan aquí vía JS para manejo limpio -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicatoria Final -->
+    <section class="py-20 bg-white border-t border-gold-100 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-gold-300 to-transparent"></div>
+        <div class="max-w-2xl mx-auto px-4">
+            <i class="fas fa-church text-4xl text-gray-300 mb-6"></i>
+            <h3 class="font-serif text-2xl text-gray-800 mb-6 italic">Una Oración por Ustedes</h3>
+            <p class="text-gray-600 leading-relaxed text-lg">
+                "Le pido a la Virgen María que siempre los cubra con su manto, los cuide y los lleve de su mano para que estén siempre cerca de su hijo Jesucristo. Gracias por ser luz en mi camino."
+            </p>
+            <div class="mt-10">
+                <span class="font-script text-5xl text-gold-500 opacity-80">50</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gold-400 text-4xl focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="Full size" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl border border-gray-800">
+    </div>
+
+    <!-- Scripts de Funcionalidad -->
+    <script>
+        // --- GEMINI API LOGIC ---
+        const apiKey = ""; // API Key handled by system
+
+        async function callGemini(prompt) {
+            if (!apiKey) {
+                console.error("API Key not found");
+                return "Error: No se pudo conectar con el servicio de IA.";
+            }
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                
+                const data = await response.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "Lo siento, no pude generar una respuesta en este momento.";
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                return "Hubo un pequeño error técnico. Por favor intenta de nuevo.";
+            }
+        }
+
+        async function generateDedication() {
+            const name = document.getElementById('dedicationName').value.trim();
+            const memory = document.getElementById('dedicationMemory').value.trim();
+            const resultDiv = document.getElementById('dedicationResult');
+            const textP = document.getElementById('dedicationText');
+            const btn = document.querySelector("button[onclick='generateDedication()']");
+
+            if (!name || !memory) {
+                alert("Por favor escribe tu nombre y un recuerdo para generar el mensaje.");
+                return;
+            }
+
+            // UI Loading state
+            btn.disabled = true;
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = `<span class="loading-dots">Creando magia</span>`;
+            
+            const prompt = `Escribe una dedicatoria breve, emotiva y elegante para el 50 aniversario de bodas (Bodas de Oro) de Oswaldo y Amanda. 
+            Quien escribe es: ${name}. 
+            El recuerdo o contexto clave es: "${memory}". 
+            El tono debe ser cariñoso, familiar y respetuoso. Máximo 60 palabras. Idioma: Español.`;
+
+            const response = await callGemini(prompt);
+
+            textP.innerText = response;
+            resultDiv.classList.remove('hidden');
+            
+            // Restore button
+            btn.innerHTML = originalBtnText;
+            btn.disabled = false;
+        }
+
+        async function generateAdvice() {
+            const question = document.getElementById('adviceQuestion').value.trim();
+            const resultDiv = document.getElementById('adviceResult');
+            const textP = document.getElementById('adviceText');
+            const btn = document.querySelector("button[onclick='generateAdvice()']");
+
+            if (!question) {
+                alert("Por favor escribe una pregunta para pedir consejo.");
+                return;
+            }
+
+            // UI Loading state
+            btn.disabled = true;
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = `<span class="loading-dots">Consultando a la sabiduría</span>`;
+
+            const prompt = `Actúa como la "conciencia colectiva" de Oswaldo y Amanda, una pareja que celebra 50 años de casados.
+            Perfil de Oswaldo: Positivo, trabajador incansable, nunca se queja, siempre tiene buena actitud.
+            Perfil de Amanda: Astuta, luchadora, inteligente, estratega, con aspiraciones de ser mejor.
+            Ambos: Buenos cristianos, valoran la familia y la perseverancia.
+            
+            Responde a esta pregunta de un familiar: "${question}"
+            
+            Da un consejo breve, sabio y cálido que combine la positividad de él y la astucia de ella. Máximo 80 palabras. Idioma: Español.`;
+
+            const response = await callGemini(prompt);
+
+            textP.innerText = response;
+            resultDiv.classList.remove('hidden');
+
+            // Restore button
+            btn.innerHTML = originalBtnText;
+            btn.disabled = false;
+        }
+
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Texto copiado al portapapeles ✨");
+            });
+        }
+
+        // --- EXISTING GALLERY LOGIC ---
+        // Lista de URLs de Imgur proporcionadas (limpia de duplicados obvios y organizada)
+        const photos = [
+            "https://i.imgur.com/D589ir7.jpeg",
+            "https://i.imgur.com/SbG0Huc.jpeg",
+            "https://i.imgur.com/23krVt0.jpeg",
+            "https://i.imgur.com/jAOjZOG.jpeg",
+            "https://i.imgur.com/S5AX84X.jpeg",
+            "https://i.imgur.com/VBVsiBN.jpeg",
+            "https://i.imgur.com/6tOc870.jpeg",
+            "https://i.imgur.com/fHu0wSg.jpeg",
+            "https://i.imgur.com/8Pu3xvr.jpeg",
+            "https://i.imgur.com/kS5VlQ7.jpeg",
+            "https://i.imgur.com/iXOjUaj.jpeg",
+            "https://i.imgur.com/dq4GVst.jpeg",
+            "https://i.imgur.com/Ib4LkIP.jpeg",
+            "https://i.imgur.com/F8Tw5cg.jpeg",
+            "https://i.imgur.com/wPn1Mcf.jpeg",
+            "https://i.imgur.com/utDeu8K.jpeg",
+            "https://i.imgur.com/cvciPEy.jpeg",
+            "https://i.imgur.com/KGplE83.jpeg",
+            "https://i.imgur.com/XhGtFRH.jpeg",
+            "https://i.imgur.com/70Zx1rE.jpeg",
+            "https://i.imgur.com/HBSckNF.jpeg",
+            "https://i.imgur.com/STVqeoY.jpeg"
+        ];
+
+        const grid = document.getElementById('photo-grid');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        // Generar grilla de fotos
+        photos.forEach((url, index) => {
+            const div = document.createElement('div');
+            div.className = 'photo-card break-inside-avoid mb-4';
+            div.innerHTML = `
+                <div class="relative group cursor-pointer overflow-hidden rounded-lg shadow-md bg-white p-1 border border-gray-100" onclick="openLightbox('${url}')">
+                    <div class="aspect-w-3 aspect-h-4 md:aspect-none">
+                        <img src="${url}" alt="Recuerdo ${index + 1}" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <i class="fas fa-search-plus text-white text-2xl drop-shadow-lg"></i>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(div);
+        });
+
+        // Funciones del Lightbox
+        function openLightbox(url) {
+            lightboxImg.src = url;
+            lightbox.classList.remove('hidden');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxImg.src = '';
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") closeLightbox();
+        });
+
+        lightbox.addEventListener('click', function(event) {
+            if (event.target === lightbox) closeLightbox();
+        });
+    </script>
+</body>
+</html>
+
+
+
